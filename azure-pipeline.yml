@@ -1,0 +1,27 @@
+pool:
+  vmImage: 'windows-latest'
+
+ 
+
+variables:
+- group: az-login-knoldus
+
+ 
+
+resources:
+  repositories:
+    - repository: azLogin
+      type: github
+      name: knoldus/creating_azlogin_common_templateADO
+      ref: main
+      endpoint: ''
+
+ 
+
+steps:
+- template: frameWork/common/azLogin.yml@azLogin
+  parameters:
+    azureSubscription: $(azureSubscription)
+    servicePrincipalId: $(servicePrincipalId)
+    tenantId: $(tenantId)
+    servicePrincipalKey: $(servicePrincipalKey)
