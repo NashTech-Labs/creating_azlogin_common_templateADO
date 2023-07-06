@@ -1,0 +1,8 @@
+steps:
+  - task: PowerShell@2
+    displayName: 'Azure Login'
+    inputs:
+      targetType: 'inline'
+      script: |
+        az login --service-principal --username ${{ parameters.servicePrincipalId }} --tenant ${{ parameters.tenantId }} --password ${{ parameters.servicePrincipalKey }} 
+        az account set --subscription ${{ parameters.azureSubscription }}
